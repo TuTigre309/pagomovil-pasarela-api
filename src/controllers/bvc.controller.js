@@ -1,15 +1,5 @@
 import * as BVCapi from '../libs/BVCapi'
-
-export async function createPayment(req,res) {
-    const data = req.body
-
-    try{
-    const response = await BVCapi.cobroC2P(data)
-    res.status(200).json({'response': response})
-    } catch(err) {
-        res.status(500).json({'error': err})
-    }
-}
+import * as BCVapi from '../libs/BCVapi'
 
 export async function confirmPayment(req,res) {
     let {referencia, fecha, banco, telefonoP, monto} = req.body
@@ -23,7 +13,12 @@ export async function confirmPayment(req,res) {
 
     try{
         const response = await BVCapi.VerificacionPagoMovilP2C(data)
-        res.status(200).json({error : false ,message: response.descripcion})
+
+        const exchangeRate = await BCVapi.bcvExchange()
+
+        const USD = exchangeRate === 0.00 ? 0.00 : (data.monto / exchangeRate).toFixed(2)
+
+        res.status(200).json({error : false ,message: response.descripcion, USD})
     } catch(error) {
         if (error.status) return res.status(error.status).json({error: true, message: error.error.descripcion || error.error.mensaje || error.error})
         res.status(500).json({error: true, message: error})
