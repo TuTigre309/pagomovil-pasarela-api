@@ -3,7 +3,7 @@ import * as BCVapi from '../libs/BCVapi'
 
 export async function confirmPayment(req,res) {
     let {referencia, fecha, banco, telefonoP, monto} = req.body
-    const processPayment = true
+    const processPayment = false
 
     telefonoP = '58' + telefonoP
 
