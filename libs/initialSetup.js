@@ -1,4 +1,4 @@
-import ApiKey from '../models/ApiKey'
+import ApiKey from '../models/ApiKey.js'
 
 export const createApiKey = async () => {
     try{

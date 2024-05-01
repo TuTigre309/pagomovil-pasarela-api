@@ -1,4 +1,4 @@
-import BCVExchange from "../models/BCVExchange";
+import BCVExchange from "../models/BCVExchange.js";
 
 export async function bcvExchange() {
     try{

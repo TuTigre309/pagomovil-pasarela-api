@@ -1,10 +1,11 @@
 import express from 'express'
 import morgan from 'morgan'
-import paymentRoutes from './routes/payment.routes'
+import paymentRoutes from './routes/payment.routes.js'
 import helmet from "helmet";
 import cors from 'cors';
+import dotenv from 'dotenv';
 
-require('dotenv').config()
+dotenv.config();
 
 const app = express()
 

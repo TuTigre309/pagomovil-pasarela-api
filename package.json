@@ -2,11 +2,12 @@
   "name": "login-server",
   "version": "1.0.0",
   "description": "This is a reusable login micro-service that works with passport.js, express and mongoDb",
-  "main": "server.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "cross-env IS_DEV=false babel src --out-dir build",
-    "dev": "nodemon src/server.js --exec babel-node",
-    "start": "node build/server.js"
+    "build": "cross-env IS_DEV=false babel --out-dir build",
+    "dev": "nodemon ./index.js --exec babel-node",
+    "start": "node build/index.js"
   },
   "keywords": [
     "login",

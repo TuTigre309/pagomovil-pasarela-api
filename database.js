@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import * as initialSetup from './libs/initialSetup';
+import * as initialSetup from './libs/initialSetup.js';
 
 let cachedDb = null; // Variable para almacenar la conexión de la base de datos
 

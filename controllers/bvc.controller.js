@@ -1,5 +1,5 @@
-import * as BVCapi from '../libs/BVCapi'
-import * as BCVapi from '../libs/BCVapi'
+import * as BVCapi from '../libs/BVCapi.js'
+import * as BCVapi from '../libs/BCVapi.js'
 
 export async function confirmPayment(req,res) {
     let {referencia, fecha, banco, telefonoP, monto} = req.body
@@ -21,6 +21,7 @@ export async function confirmPayment(req,res) {
         res.status(200).json({error : false ,message: response.descripcion, USD})
     } catch(error) {
         if (error.status) return res.status(error.status).json({error: true, message: error.error.descripcion || error.error.mensaje || error.error})
-        res.status(500).json({error: true, message: error})
+        console.log(error)
+        res.status(500).json({error: true, message: 'Error de conexión con el banco'})
     }
 }

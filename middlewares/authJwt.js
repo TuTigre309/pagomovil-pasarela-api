@@ -1,6 +1,7 @@
-import ApiKey from '../models/ApiKey'
+import ApiKey from '../models/ApiKey.js'
+import dotenv from 'dotenv';
 
-require('dotenv').config()
+dotenv.config();
 
 export const verifyAPIKey = async (req, res, next) => {
     try {
