@@ -1,4 +1,3 @@
-import axios from "axios";
 import https from 'https'
 import * as crypto from "crypto"
 
@@ -28,48 +27,48 @@ export function decryptDt(encryptedData) {
 }
 
 export async function DebitoTDC(dt) {
-    const url_dev = process.env.URL_DEV + '/Cobranzas/rs/cd'
-    const url_prod = process.env.URL_PROD + '/cd'
+    // const url_dev = process.env.URL_DEV + '/Cobranzas/rs/cd'
+    // const url_prod = process.env.URL_PROD + '/cd'
 
-    const encryptedDt = encryptDt(dt)
+    // const encryptedDt = encryptDt(dt)
 
-    const url = process.env.IS_DEV ? url_dev : url_prod
-    const data = {
-        hs: process.env.HS,
-        dt: encryptedDt
-    }
+    // const url = process.env.IS_DEV ? url_dev : url_prod
+    // const data = {
+    //     hs: process.env.HS,
+    //     dt: encryptedDt
+    // }
 
-    const response = await axios.post(url, data)
-    .then( (response) => {
-      if (response.status === 400 || response.status === 500) return badResponse(response.status,response.data)
+    // const response = await axios.post(url, data)
+    // .then( (response) => {
+    //   if (response.status === 400 || response.status === 500) return badResponse(response.status,response.data)
 
-    })
-    .catch( (error) => {
-      return {error:true, message:error.message}
-    });
+    // })
+    // .catch( (error) => {
+    //   return {error:true, message:error.message}
+    // });
 
     return response
 }
 
 export async function cobroC2P(dt) {
-  const url_dev = process.env.URL_DEV + '/c2p'
-  const url_prod = process.env.URL_PROD + '/c2p'
+  // const url_dev = process.env.URL_DEV + '/c2p'
+  // const url_prod = process.env.URL_PROD + '/c2p'
 
-  const encryptedDt = encryptDt(dt)
+  // const encryptedDt = encryptDt(dt)
 
-  const url = process.env.IS_DEV ? url_dev : url_prod
-  const data = {
-      hs: process.env.HS,
-      dt: encryptedDt
-  }
+  // const url = process.env.IS_DEV ? url_dev : url_prod
+  // const data = {
+  //     hs: process.env.HS,
+  //     dt: encryptedDt
+  // }
 
-  const response = await axios.post(url, data,{ httpsAgent })
-  .then( (response) => {
-    if (response.status === 400 || response.status === 500) return badResponse(response.status,response.data)
-  })
-  .catch( (error) => {
-    return {error:true, message:error}
-  });
+  // const response = await axios.post(url, data,{ httpsAgent })
+  // .then( (response) => {
+  //   if (response.status === 400 || response.status === 500) return badResponse(response.status,response.data)
+  // })
+  // .catch( (error) => {
+  //   return {error:true, message:error}
+  // });
 
   return response
 }
